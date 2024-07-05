@@ -1,24 +1,20 @@
 calls = 0
 
-def count_calls(calls):
-    print(calls)
+def count_calls():
+    global calls
+    calls += 1
 
 def string_info(string):
-    global calls
-    calls += 1
-    new_tuple = (len(string), string.upper(), string.lower())
-    return new_tuple
+    count_calls()
+    return (len(string), string.upper(), string.lower())
 
 def is_contains(string, list_to_search):
-    global calls
-    calls += 1
+    count_calls()
+    string = string.lower()
     for item in list_to_search:
-        new_list = []
-        new_list.append(item.lower())
-    if string.lower() in new_list:
-        return True
-    else:
-        return False
+        if string in item.lower():
+            return True
+    return False
 
 print(string_info('Capybara'))
 print(string_info('Armageddon'))
